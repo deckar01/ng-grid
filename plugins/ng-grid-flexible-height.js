@@ -8,6 +8,9 @@ function ngGridFlexibleHeightPlugin (opts) {
         self.scope = scope;
         var recalcHeightForData = function () { setTimeout(innerRecalcForData, 1); };
         var innerRecalcForData = function () {
+            if (!self.grid.$topPanel) {
+                return;
+            }
             var gridId = self.grid.gridId;
             var footerPanelSel = '.' + gridId + ' .ngFooterPanel';
             var extraHeight = self.grid.$topPanel.height() + $(footerPanelSel).height();
